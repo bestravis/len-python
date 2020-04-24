@@ -5,7 +5,15 @@ URL="https://www.baidu.com/sugrec?prod=pc_his&from=pc_web&json=1&sid=1467_31169_
 HEADERS = {
     "User-Agent":"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
 }
-response = requests.get(URL,headers=HEADERS)
+cookiesDit={
+    "sid":'123321'
+}
+response = requests.get(URL,headers=HEADERS,cookies=cookiesDit)
+response.encoding='utf-8'
 json=json.loads(response.text)
 print(json)
 print("err_no:",json.get("err_no"))
+print(response.headers.get_dict())
+
+
+
